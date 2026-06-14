@@ -1,0 +1,38 @@
+workflows:
+  android-build:
+    name: NexOffice Android Build
+    max_build_duration: 60
+
+    environment:
+      java: 17
+      android_signing:
+        - keystore_reference
+
+      vars:
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m"
+
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
+
+    scripts:
+      - name: Set up permissions
+        script: chmod +x ./gradlew
+
+      - name: Clean project
+        script: ./gradlew clean
+
+      - name: Build Debug APK
+        script: ./gradlew assembleDebug
+
+      - name: Build Release APK
+        script: ./gradlew assembleRelease
+
+    artifacts:
+      - app/build/outputs/**/*.apk
+
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
