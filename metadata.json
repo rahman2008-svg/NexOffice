@@ -1,0 +1,6 @@
+{
+  "name": "NexOffice Studio",
+  "description": "Modern offline Android productivity suite inspired by WPS Office, built by Prince AR Abdur Rahman with NexVora Lab's Ofc.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
